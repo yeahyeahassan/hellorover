@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+    font-family: "AkiraExpanded";
+    src: url("../font/Akira\ Expanded\ Demo.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "mars";
+    src: url(../fonts/Mars.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-position: center;
+    background-color: #010101;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 3.25rem;
+    height: 3.25rem;
+    background-image: url("../images/umrt_logo.png");
+    background-size: cover;
+    margin-right: 5px;
+}
+
+.akira {
+    font-family: "AkiraExpanded", sans-serif;
+}
+
+.text {
+    font-size: 2.25rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Hide Home on desktop, show on mobile */
+.nav-home-mobile {
+    display: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff6b6b;
+}
+
+.team-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.team-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    min-width: 150px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    z-index: 2;
+}
+
+.team-dropdown:hover .team-dropdown-content {
+    display: block;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-link:hover {
+    background-color: #333;
+}
+
+.sponsor-btn {
+    background-color: #ff5252;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.sponsor-btn:hover {
+    background-color: #ff3838;
+}
+
+/* Hamburger menu styles */
+.menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.close-icon {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 4;
+}
+
+.menu-icon.hide {
+    display: none !important;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1.5rem;
+    }
+    .text {
+        font-size: 2.2rem;
+    }
+    .logo {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+/* Show dropdown on hover for desktop */
+@media (min-width: 971px) {
+    .team-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.9);
+        min-width: 150px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 0.5rem 0;
+        z-index: 6;
+    }
+
+    .team-dropdown:hover .team-dropdown-content {
+        display: block;
+    }
+}
+
+@media (max-width: 970px) {
+    nav {
+        position: relative;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 4rem;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70vw;
+        max-width: 320px;
+        height: 100vh;
+        background: #111;
+        gap: 1.5rem;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 5;
+        padding: 2.5rem 2rem 2rem 2rem;
+    }
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-home-mobile {
+        display: block;
+    }
+
+    .close-icon {
+        display: block;
+    }
+
+    .nav-links .nav-link,
+    .nav-links .team-dropdown,
+    .nav-links .sponsor-btn {
+        width: 100%;
+    }
+
+    .logo-container {
+        flex: 1;
+    }
+    .text {
+        font-size: 2rem;
+    }
+    .logo {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .sponsor-btn {
+        order: 1;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: calc(100% - 2rem);
+        text-align: center;
+    }
+
+    .team-dropdown-content {
+        display: none !important;
+        position: static;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+    }
+
+    .team-dropdown-content.mobile-open {
+        display: block !important;
+        animation: fadeIn .3s ease-in;
+    }
+
+    .team-dropdown:hover .team-dropdown-content {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .dropdown-link {
+        padding: 0.75rem 1rem;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    nav {
+        padding: 1rem;
+    }
+
+    .menu-icon {
+        right: 1rem;
+    }
+}
+
+::selection {
+    background: rgba(250, 100, 0, 0.5);
+    color: #fff;
+    /* White text for contrast */
+}
+
+/* For Firefox */
+::-moz-selection {
+    background: rgba(250, 100, 0, 0.5);
+    color: #fff;
+}
+
+/* Disable scrolling when the menu is open */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
